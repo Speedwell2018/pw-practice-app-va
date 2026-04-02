@@ -35,12 +35,12 @@ export default defineConfig<TestOptions>({
     headless: true
 
   },
-  webServer: {
-    command: `sh -c "cd ${path.resolve(__dirname, '../pw-practice-app')} && npm start"`,
-    url: 'http://localhost:4200',
-    reuseExistingServer: true,
-    timeout: 120000
-  },
+ webServer: {
+  command: `sh -c "cd ${path.resolve(__dirname, '../pw-practice-app')} && npm install && npm start"`,
+  url: 'http://localhost:4200',
+  reuseExistingServer: !process.env.CI,  // 👈 false in CI, true locally
+  timeout: 120000
+},
   projects: [
     {
       name: 'dev',
