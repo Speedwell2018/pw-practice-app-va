@@ -3,6 +3,7 @@ import type {TestOptions} from './test-options';
 import dotenv from 'dotenv';
 import path from 'node:path';
 import { json } from 'node:stream/consumers';
+import { createArgosReporterOptions } from "@argos-ci/playwright/reporter";
 
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
@@ -24,13 +25,9 @@ export default defineConfig<TestOptions>({
     // Add Argos reporter.
     [
       "@argos-ci/playwright/reporter",
-      {
-        // Upload to Argos on CI only.
+      createArgosReporterOptions({
         uploadToArgos: !!process.env.CI,
-
-        // Set your Argos token (required if not using GitHub Actions).
-      
-      }
+      }),
     ],
     //['allure-playwright'],
   ['html'],
