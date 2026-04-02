@@ -38,6 +38,13 @@ console.log(buffer.toString('base64'));
   await pm.onDatePickerPage().selectCommonDatePickerRangeFromToday(5, 10);
 });
 
+test.only('test for Argo CI', async ({ page }) => {
+  const pm= new PageManager(page);
+  
+  await pm.navigateTo().formLayoutsPage();
+  await pm.navigateTo().datepickerPage();
+
+});
 
 
 
