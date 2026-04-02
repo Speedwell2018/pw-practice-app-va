@@ -1,0 +1,21 @@
+{
+  "name": "pw-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pageObjects-chrome": "npx playwright test usePageObjects.spec.ts --project=chromium",
+    "pageObjects-dev": "npx playwright test usePageObjects.spec.ts --project=dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "@playwright/test": "^1.59.0",
+    "@types/node": "^25.5.0",
+    "allure-playwright": "^3.6.0",
+    "dotenv": "^17.3.1"
+  }
+}
