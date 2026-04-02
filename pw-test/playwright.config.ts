@@ -6,6 +6,9 @@ import { json } from 'node:stream/consumers';
 
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
+const appPath = process.env.GITHUB_WORKSPACE 
+  ? path.resolve(process.env.GITHUB_WORKSPACE, 'pw-practice-app')
+  : path.resolve(__dirname, '../pw-practice-app');
 
 
 export default defineConfig<TestOptions>({
@@ -36,7 +39,7 @@ export default defineConfig<TestOptions>({
 
   },
  webServer: {
-  command: `sh -c "cd ${path.resolve(process.cwd(), 'pw-practice-app')} && npm install && npm start"`,
+  command: `sh -c "cd ${appPath} && npm install && npm start"`,
   url: 'http://localhost:4200',
   reuseExistingServer: !process.env.CI,
   timeout: 120000
